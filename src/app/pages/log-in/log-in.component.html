@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar class="header">
+      <span class="white fs-15">Contract <span class="portal">Portal</span></span> 
+      <span class="layout"></span>
+      <mat-nav-list>
+        <a mat-list-item class="white">Terms of services | Privacy policy</a>
+      </mat-nav-list>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="container">
+  <div class="centerme">
+    <mat-card>
+      <mat-card-title class="text-center">Welcome Back</mat-card-title>
+      <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login(loginForm.value)">
+        <mat-form-field class="form-element" >
+          <input matInput placeholder="User / Email" formControlName="email">
+          <mat-error *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.touched">
+            Field required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element" >
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+            Field required, Password needs to be at least eight characters, one uppercase letter and one number
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <br>
+          <span class="fl">
+            <mat-checkbox>Stay signed in</mat-checkbox>
+          </span>
+          <span class="fr"><a>Forgot your password?</a></span>
+          <br><br>
+        </div>
+        <button mat-raised-button class="btn" type="submit">Log In</button>
+      </form>
+      <h5 class="center paddding">Don't have an account? <a routerLink="/" class="primary-color">Sign Up</a></h5>
+    </mat-card>
+  </div>
+</div>

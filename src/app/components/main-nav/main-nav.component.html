@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar class="header"><mat-icon aria-label="Side nav toggle icon" class="white">menu</mat-icon></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class="white"><mat-icon>person</mat-icon></a>
+      <a mat-list-item class="white"><mat-icon>business_center</mat-icon></a>
+      <a mat-list-item class="white"><mat-icon>calendar_today</mat-icon></a>
+      <a mat-list-item class="white"><mat-icon> insert_drive_file</mat-icon></a>
+      <a mat-list-item class="white"><mat-icon> message</mat-icon></a>
+      <a mat-list-item class="white"><mat-icon>settings</mat-icon></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar class="header">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="white"> Contract <span class="portal"> Portal</span></span>
+      <span class="layout"></span>
+      <mat-icon class="white pl">notifications_active</mat-icon>
+      <mat-icon class="primary-color pl">supervised_user_circle</mat-icon>
+      <button mat-button [matMenuTriggerFor]="menu" class="white">{{user?.userName}}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Account Settings</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile class="ml-8">
+        <mat-card class="col-l"></mat-card>
+      </mat-grid-tile >
+      <mat-grid-tile>
+        <mat-card class="col-r"></mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile class="ml-8">
+        <mat-card class="col-l"></mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="col-r"></mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="centerme">
+    <mat-card>
+      <mat-card-title class="text-center">Create User</mat-card-title>
+      <form [formGroup]="signupForm" class="example-form" (ngSubmit)="submit(signupForm.value)">
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Username" formControlName="userName">
+          <mat-error *ngIf="!controls.userName.valid && controls.userName.touched">
+            {{alert}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="!controls.email.valid && controls.email.touched">
+            Not a valid Email Address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Passwrod" type="password" formControlName="password">
+          <mat-error *ngIf="!controls.password.valid && controls.password.touched">
+            Field required, Password needs to be at least eight characters, one uppercase letter and one number
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Confirm password" type="password"
+            formControlName="confirmPassword">
+          <mat-error
+            *ngIf="!controls.confirmPassword.valid && controls.confirmPassword.touched && !controls.confirmPassword.errors?.MatchPassword">
+            Field required, Password needs to be at least eight characters, one uppercase letter and one number
+          </mat-error>
+          <mat-error *ngIf="controls.confirmPassword.touched && controls.confirmPassword.errors?.MatchPassword">
+            Password and confirmPassword mismatch
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Display Name" formControlName="displayName">
+          <mat-error *ngIf="!controls.displayName.valid && controls.displayName.touched">
+            Required field, must be between 4 and 10 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="!controls.firstName.valid && controls.firstName.touched">
+            Required field, must be between 4 and 10 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="!controls.lastName.valid && controls.lastName.touched">
+            Required field, must be between 4 and 10 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Nick Name" formControlName="nickName">
+          <mat-error *ngIf="!controls.nickName.valid && controls.nickName.touched">
+            Required field, must be between 4 and 10 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Website" formControlName="website">
+          <mat-error *ngIf="!controls.website.valid && controls.website.touched">
+            Required Field(eg: https://www.google.com/)
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <textarea matInput placeholder="Bio" formControlName="bio"></textarea>
+          <mat-error *ngIf="!controls.bio.valid && controls.bio.touched">
+            Required field, must be between 5 and 50 characters
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Jabber" formControlName="jabber">
+          <mat-error *ngIf="!controls.jabber.valid && controls.jabber.touched">
+            {{alert}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="AOL IM" formControlName="aolIm">
+          <mat-error *ngIf="!controls.aolIm.valid && controls.aolIm.touched">
+            {{alert}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Yahoo IM" formControlName="yahooIm">
+          <mat-error *ngIf="!controls.yahooIm.valid && controls.yahooIm.touched">
+            {{alert}}
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="md-full btn-color" [disabled]="!signupForm.valid" type="submit">Create And
+          Access</button>
+      </form>
+    </mat-card>
+  </div>
+</div>
