@@ -21,7 +21,7 @@ export class AuthorizationService {
     return this.allUsersData.filter( userData => userData.userName === data.userName || data.email === userData.email ).length !== 0;
   }
 
-  isUserExistt(data): boolean {
+  isUserExistForLogin(data): boolean {
     const users = JSON.parse(localStorage.getItem('user'));
     this.allUsersData = users? users : this.allUsersData;
     return this.allUsersData.filter( userData => userData.userName === data.email || data.email === userData.email ).length !== 0;

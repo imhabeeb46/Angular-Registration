@@ -36,7 +36,7 @@ export class LogInComponent implements OnInit {
 
   login(info) {
     if (this.loginForm.valid) {
-      if (!this.AuthService.isUserExistt(info)) {
+      if (!this.AuthService.isUserExistForLogin(info)) {
         this.AuthService.openSnackBar(this.LOGIN_CRED_FAIL_MSG, this.SNACKBAR_CLOSE);
       } else {
         this.AuthService.isCredentialsMatch(info) ?
